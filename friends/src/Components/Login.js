@@ -9,6 +9,7 @@ class Login extends React.Component {
         credentials: {
             username: '',
             password: '',
+            isLoading: true
         }
     }
 
@@ -21,10 +22,30 @@ class Login extends React.Component {
         })
     } 
 
+    login = e => {
+        e.preventDefault();
+        axiosWithAuth()
+            .post('api/login', this.state.credentials)
+            .then(res => {
+                localStorage.setItem('token', res.data.payload)
+                this.props.history.push('/protected')
+            })
+    }
+
+    componentDidMount() {
+        this.setState({ isLoading: false })
+    }
+
     render() {
         return(
             <div>
+                {this.state.isLoading ? (
+                    <Loader type="Rings" color="#somecolor" height={80} width={80} />
+                ) : (
                 <form>
+ 
+                        
+                    
                     <input
                         type='text'
                         name='username'
@@ -41,6 +62,7 @@ class Login extends React.Component {
                     />
                     <button>Log In</button>
                 </form>
+                )}
             </div>
         )
     }
