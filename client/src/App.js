@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import axios from 'axios'
+import { Route, Link } from 'react-router-dom';
 import './App.css';
 
 // Components
 import Login from './components/Login';
 import Profile from './components/Profile';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
         <Link to="/">Login</Link>
         <Link to="/profile">Profile</Link>
       </div>
-      <Route exact path="/" component={Login}/>
-      <Route exact path="/profile" component={Profile}/>
+      <PrivateRoute path="/profile" component={Profile}/>
+      <Route  exact path="/" component={Login}/>
       
     </div>
   );
