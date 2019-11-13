@@ -4,7 +4,8 @@ import './App.css';
 
 // Components
 import Login from './components/Login';
-import Profile from './components/Profile';
+import Profile from './components/Friends';
+import FriendList from './components/FriendList';
 import PrivateRoute from './components/PrivateRoute';
 
 function App() {
@@ -12,9 +13,11 @@ function App() {
     <div className="App">
       <div>
         <Link to="/">Login</Link>
-        <Link to="/profile">Profile</Link>
+        <Link to="/friends">Friends</Link>
+        {/* <Link to="/friendlist">FriendList</Link> */}
       </div>
-      <PrivateRoute path="/profile" component={Profile}/>
+      <PrivateRoute path="/friends" component={Profile}/>
+      <PrivateRoute path="/friendlist" component={FriendList}/>
       <Route  exact path="/" component={Login}/>
       
     </div>

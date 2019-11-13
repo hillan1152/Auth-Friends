@@ -26,7 +26,7 @@ class Login extends React.Component {
             .then(res => {
                 console.log(res)
                 localStorage.setItem('token', res.data.payload)  
-                this.props.history.push('/profile');  
+                this.props.history.push('/friends');  
                 this.setState({...this.state, isLoggedIn: true, isLoading: true})
             })
             .catch(err => console.log('this is an error', err))
