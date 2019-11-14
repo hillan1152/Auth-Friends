@@ -2,7 +2,7 @@ const initialState = {
     friends: [], 
     isLoading: false, 
     error: null,
-    login: '',
+    username: '',
     password: ''
 }
 
